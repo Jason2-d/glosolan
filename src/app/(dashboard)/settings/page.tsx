@@ -1,10 +1,10 @@
-import SignUp from '@/components/auth/sign-up'
+import SettingsPage from '@/components/custom_ui/settings/settings'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <SignUp />
+      <SettingsPage />
     </div>
   )
 }

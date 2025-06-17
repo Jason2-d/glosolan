@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
+import { useRouter } from 'next/navigation';
 
 // Import types and data
 import { 
@@ -13,11 +14,11 @@ import {
   HERO_CONTENT, 
   DEFAULT_FORGOT_PASSWORD_DATA 
 } from '../../types/auth';
-
 export default function ForgotPassword() {
   const [formData, setFormData] = useState<ForgotPasswordFormData>(DEFAULT_FORGOT_PASSWORD_DATA);
   const [isLoading, setIsLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const router = useRouter();
 
   const handleInputChange = (field: keyof ForgotPasswordFormData, value: string) => {
     setFormData(prev => ({
@@ -36,7 +37,8 @@ export default function ForgotPassword() {
   };
 
   const handleBackToSignIn = () => {
-    console.log('Navigate back to sign in');
+    console.log('Navigate back to sign in')
+    router.push('/auth/sign-in');
   };
 
   return (

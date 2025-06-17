@@ -16,6 +16,7 @@ import {
   HERO_CONTENT, 
   DEFAULT_SIGNUP_DATA 
 } from '../../types/auth';
+import { useRouter } from 'next/navigation';
 
 // Social Icon Components
 const SocialIcon = ({ provider }: { provider: SocialProvider }) => {
@@ -70,6 +71,13 @@ export default function SignUp() {
 
   const handleSocialLogin = (provider: string) => {
     console.log(`${provider} signup initiated`);
+  };
+
+  const router = useRouter();
+
+   const handleSignIn = () => {
+    console.log('Navigate to sign In page');
+    router.push('/auth/sign-in');
   };
 
   return (
@@ -227,6 +235,14 @@ export default function SignUp() {
                 </Button>
               ))}
             </div>
+
+            {/* Sign Up Link */}
+                        <p className="text-center text-gray-400 text-sm pt-4">
+                          Already have an account? 
+                          <Button variant="link" onClick={handleSignIn} className="text-red-500 hover:text-red-400 p-0 h-auto ml-1">
+                            Sign In
+                          </Button>
+                        </p>
           </div>
         </div>
       </div>

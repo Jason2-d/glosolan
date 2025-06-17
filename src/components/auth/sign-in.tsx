@@ -16,6 +16,8 @@ import {
   HERO_CONTENT, 
   DEFAULT_FORM_DATA 
 } from '../../types/auth';
+import router from 'next/router';
+import { useRouter } from 'next/navigation';
 
 // Social Icon Components
 const SocialIcon = ({ provider }: { provider: SocialProvider }) => {
@@ -70,6 +72,18 @@ export default function SignIn() {
 
   const handleSocialLogin = (provider: string) => {
     console.log(`${provider} login initiated`);
+  };
+
+  const router = useRouter();
+
+  const handleForgotPassword = () => {
+    console.log('Navigate to forgot password page');
+    router.push('/auth/forgot-password');
+  };
+
+  const handleSignUp = () => {
+    console.log('Navigate to sign up page');
+    router.push('/auth/sign-up');
   };
 
   return (
@@ -186,7 +200,7 @@ export default function SignIn() {
                   Remember me
                 </Label>
               </div>
-              <Button variant="link" className="text-red-500 hover:text-red-400 p-0 h-auto">
+              <Button variant="link" onClick={handleForgotPassword} className="text-red-500 hover:text-red-400 p-0 h-auto">
                 Forgot Password?
               </Button>
             </div>
@@ -218,7 +232,7 @@ export default function SignIn() {
             {/* Sign Up Link */}
             <p className="text-center text-gray-400 text-sm pt-4">
               Don't have an account? 
-              <Button variant="link" className="text-red-500 hover:text-red-400 p-0 h-auto ml-1">
+              <Button variant="link" onClick={handleSignUp} className="text-red-500 hover:text-red-400 p-0 h-auto ml-1">
                 Sign Up
               </Button>
             </p>
